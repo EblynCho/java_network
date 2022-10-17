@@ -26,3 +26,4 @@ public class MColor {
 		return c;
 	}
 }
+

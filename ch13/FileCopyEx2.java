@@ -26,33 +26,44 @@ public class FileCopyEx2 extends MFrame implements ActionListener{
 		p.add(open = new Button("OPEN"));
 		p.add(save = new Button("SAVE"));
 		//ta.setEditable(false);
-		open.addActionListener(this);
+		open.addActionListener(this);  //연결
 		save.addActionListener(this);
 		add(p,BorderLayout.SOUTH);
 		validate();
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+
+	public void actionPerformed(ActionEvent e) { // 이벤트 입장에서 버튼은 source
 		Object obj = e.getSource();
-//		System.out.println(open.hashCode());
-//		System.out.println(save.hashCode());
-		
-		if (obj == open) {  // 객체의 주소값 비교
-			openDialog = new FileDialog(this, "파일열기", FileDialog.LOAD);
+		System.out.println(open.hashCode());
+		System.out.println(save.hashCode());
+		if(obj == open) { // 참조형은 객체의 주소값을 비교한다. 
+			//비번 비교는 절대 ==사용하면 안된다. db비번과 사용자가 입력한 비번은 서로 다른 String 객체
+			//dbPass == inputPass 죽었다깨도 false나온다.
+			// dbPass.equals(inputPass) 이렇게 해야 한다.
+			// equals는 내용이 동일한지 비교. ==는 주소값 비교
+			
+			openDialog = new FileDialog(this,"파일열기",FileDialog.LOAD);
 			openDialog.setVisible(true);
 			String dir, file;
 			dir = openDialog.getDirectory();
 			file = openDialog.getFile();
 			fileReader(dir + file);
-		} else if (obj == save) {
-			saveDialog = new FileDialog(this, "파일저장", FileDialog.SAVE);
+			
+			
+		}else if(obj == save) {
+			saveDialog = new FileDialog(this,"파일저장",FileDialog.SAVE);
 			saveDialog.setVisible(true);
 			String dir, file;
-			dir = saveDialog.getDirectory();
-			file = saveDialog.getFile();
+			dir = openDialog.getDirectory();
+			file = openDialog.getFile();
 			fileWriter(dir + file);
 		}
+		
+//		int i = 10;
+//		int j =12;
+		//System.out.println(i == j); //java 기본형은 값을 비교
 	}
 	
 	public void fileReader(String file){
