@@ -8,9 +8,11 @@ public class WriterEx {
 
 	public static void main(String[] args) {
 		try {
+			
 			int i = 'A';
 			char c = 'b';
 			char c1 = 'วั';
+			
 			OutputStream os = System.out;
 			Writer writer = new OutputStreamWriter(os);
 			writer.write(i);
@@ -18,9 +20,9 @@ public class WriterEx {
 			writer.write(c1);
 			writer.flush();
 			writer.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }
