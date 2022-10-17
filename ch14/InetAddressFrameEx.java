@@ -68,4 +68,3 @@ implements ActionListener{
 		new InetAddressFrameEx();
 	}
 }
-

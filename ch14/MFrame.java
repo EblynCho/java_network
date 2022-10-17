@@ -25,7 +25,7 @@ public class MFrame extends Frame{
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				System.exit(0);  // 정상적인 종료
 			}
 		});
 		setVisible(true);
