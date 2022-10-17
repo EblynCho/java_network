@@ -16,9 +16,9 @@ public class EchoServer {
 			ServerSocket server = new ServerSocket(port);
 			System.out.println("ServerSocket Start......");
 			while (true) {
-				Socket sock = server.accept();  // Client°¡ Á¢¼ÓÇÒ¶§±îÁö ´ë±â »óÅÂ(Thread)
+				Socket sock = server.accept();  // Clientê°€ ì ‘ì†í• ë•Œê¹Œì§€ ëŒ€ê¸° ìƒíƒœ(Thread)
 				EchoThread et = new EchoThread(sock);
-				et.start();  // run ¸Ş¼Òµå È£Ãâ
+				et.start();  // run ë©”ì†Œë“œ í˜¸ì¶œ
 				cnt++;
 				System.out.println("Client " + cnt + " Socket");
 			}
@@ -27,8 +27,8 @@ public class EchoServer {
 		}
 	}
 	
-	// ³»ºÎ Å¬·¡½º -> ¿ÜºÎ Å¬·¡½º¿Í ¾ÆÁÖ ¹ĞÁ¢ÇÑ °ü°è°¡ ÀÖ´Â Å¬·¡½º, ÀåÁ¡ : »ó¼Ó °¡´É
-	class EchoThread extends Thread {  // ³»ºÎ Å¬·¡½º -> EchoServer$EchoThread.class
+	// ë‚´ë¶€ í´ë˜ìŠ¤ -> ì™¸ë¶€ í´ë˜ìŠ¤ì™€ ì•„ì£¼ ë°€ì ‘í•œ ê´€ê³„ê°€ ìˆëŠ” í´ë˜ìŠ¤, ì¥ì  : ìƒì† ê°€ëŠ¥
+	class EchoThread extends Thread {  // ë‚´ë¶€ í´ë˜ìŠ¤ -> EchoServer$EchoThread.class
 		
 		Socket sock;
 		BufferedReader in;
@@ -49,12 +49,12 @@ public class EchoServer {
 		@Override
 		public void run() {
 			try {
-				// Client °¡ Á¢¼ÓÀ» ÇÏ¸é °¡Àå ¸ÕÀú ¹Ş´Â ¸Ş¼¼Áö
+				// Client ê°€ ì ‘ì†ì„ í•˜ë©´ ê°€ì¥ ë¨¼ì € ë°›ëŠ” ë©”ì„¸ì§€
 				out.println("Hello Enter BYE to exit");  // print(X), println(O)
 				while (true) {
-					// Client °¡ ¸Ş¼¼Áö º¸³»¸é ½ÇÇà
+					// Client ê°€ ë©”ì„¸ì§€ ë³´ë‚´ë©´ ì‹¤í–‰
 					String line = in.readLine();
-					if (line == null) break;  // Client °¡ Á¢¼Ó ²÷À¸¸é break
+					if (line == null) break;  // Client ê°€ ì ‘ì† ëŠìœ¼ë©´ break
 					else {
 						out.println("Echo : " + line);
 						if (line.equals("BYE")) break;
