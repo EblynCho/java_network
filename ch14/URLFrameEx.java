@@ -96,11 +96,3 @@ public class URLFrameEx extends MFrame implements ActionListener {
 		URLFrameEx ex = new URLFrameEx();
 	}
 }
-
-
-
-
-
-
-
-
